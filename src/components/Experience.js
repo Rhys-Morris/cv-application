@@ -20,6 +20,7 @@ class Experience extends React.Component {
 
                 <div className="experience__tabs" onClick={this.props.toggleExperienceTab}>
                     {experienceTabs}
+                    <div className="experience__tabs__tab experience__tabs__tab--new" onClick={this.props.createNewExperience}>New</div>
                 </div>
 
                 <div className="form__field">
@@ -43,8 +44,7 @@ class Experience extends React.Component {
                     <input
                     type="date"
                     id="startDate"
-                    placeholder="Enter job title"
-                    className="form__input"
+                    className="form__date"
                     />
                 </div>
 
@@ -53,8 +53,7 @@ class Experience extends React.Component {
                     <input
                     type="date"
                     id="endDate"
-                    placeholder="End Date"
-                    className="form__input"
+                    className="form__date"
                     />
                 </div>
 
@@ -62,12 +61,12 @@ class Experience extends React.Component {
                     <textarea
                     id="description"
                     placeholder="Tell us about this role. For example, your responsibilities, special skills etc."
-                    onChange={this.props.update}
                     className="form__text"
                     />
                 </div>
-
-                <button className="form__add" onClick={this.props.addExperience}>Add</button>
+                {this.props.experienceTabDisplayed && <button className="form__update" onClick={this.props.updateExperience}>Update</button>}
+                {this.props.experienceTabDisplayed && <button className="form__delete" onClick={this.props.deleteExperience}>Delete</button>}
+                {!this.props.experienceTabDisplayed && <button className="form__add" onClick={this.props.addExperience}>Add</button>}
             </div>
         )
     }
