@@ -104,18 +104,30 @@
 .display {
     display: flex;
     flex-direction: column;
-    border: 3px solid rgb(1, 204, 204);
+    border-right: 3px solid darkslategrey;
+    border-left: 3px solid darkslategrey;
     width: 800px;
+
+    &__heading {
+        text-transform: uppercase;
+        font-weight: 300;
+        padding: 0 20px;
+        display: inline-block;
+        border-right: 2px solid darkslategrey;
+        border-left: 2px solid darkslategrey;
+    }
 
     &__header {
         display: flex;
         align-items: center;
+        border-top: 3px solid darkslategrey;
+        border-bottom: 3px solid darkslategrey;;
 
         &__image {
             width: 200px;
             height: 200px;
             padding: 15px;
-            border-right: 3px solid rgb(1, 204, 204);
+            border-right: 3px solid darkslategrey;
         }
 
         &__text {
@@ -133,7 +145,38 @@
             letter-spacing: 2px;
             font-weight: 500;
             padding-bottom: 10px;
-            border-bottom: 2px solid rgb(1, 204, 204);
+            border-bottom: 2px solid darkslategrey;
+        }
+
+        &__contacts {
+            display: flex;
+            align-items: center;
+
+            & > * {
+                margin-right: 5rem;
+            }
         }
     }
+
+    &__bio {
+        padding: 20px;
+    }
+}
+
+.education{
+    &__tabs {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background-color: blueviolet;
+
+        &__tab {
+            cursor: pointer;
+            background-color: green;
+            padding: 5px;
+            color: white;
+            margin-right: 5px;
+        }
+    }
+
 }

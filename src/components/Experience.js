@@ -1,10 +1,26 @@
 import React from 'react';
+import uniqid from 'uniqid';
 
-class Education extends React.Component {
+class Experience extends React.Component {
     render() {
+
+        const experienceTabs = []
+
+        for (let i = 0; i < this.props.experienceTabCount; i++) { 
+            experienceTabs.push(
+                <div key={uniqid()} data-index={i} className="experience__tabs__tab">
+                    {i + 1}
+                </div>
+            )
+        };
+
         return (
             <div>
-                <h2 className="form__header">Education</h2>
+                <h2 className="form__header">Experience</h2>
+
+                <div className="experience__tabs" onClick={this.props.toggleExperienceTab}>
+                    {experienceTabs}
+                </div>
 
                 <div className="form__field">
                     <input
@@ -51,10 +67,10 @@ class Education extends React.Component {
                     />
                 </div>
 
-                <button className="form__add" onClick={this.props.addEducation}>Add</button>
+                <button className="form__add" onClick={this.props.addExperience}>Add</button>
             </div>
         )
     }
 }
 
-export default Education;
+export default Experience;

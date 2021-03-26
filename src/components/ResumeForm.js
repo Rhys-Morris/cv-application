@@ -1,14 +1,22 @@
 import React from 'react';
 import PersonalInformation from './PersonalInformation';
-import Education from './Education';
+import Experience from './Experience';
 
 class ResumeForm extends React.Component {
     render() {
-        const { updatePersonalInformation, addEducation } = this.props;
+        const { updatePersonalInformation,
+                addExperience,
+                experienceTabCount,
+                toggleExperienceTab
+        } = this.props;
         return (
             <div className="resume-form">
                 <PersonalInformation update={updatePersonalInformation}/>
-                <Education addEducation={addEducation} />
+                <Experience 
+                    addExperience={addExperience} 
+                    experienceTabCount={experienceTabCount}
+                    toggleExperienceTab={toggleExperienceTab}
+                />
             </div>
         )
     }

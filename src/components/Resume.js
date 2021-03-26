@@ -7,10 +7,11 @@ class Resume extends React.Component {
         super(props);
         this.state = {
             personalInformation: {},
-            education: []
+            experience: []
         }
         this.updatePersonalInformation = this.updatePersonalInformation.bind(this);
-        this.addEducation = this.addEducation.bind(this)
+        this.addExperience = this.addExperience.bind(this)
+        this.toggleExperienceTab = this.toggleExperienceTab.bind(this)
     };
 
     updatePersonalInformation(e) {
@@ -22,24 +23,29 @@ class Resume extends React.Component {
         }));
     }
 
-    addEducation() {
+    addExperience() {
         const jobTitle = document.getElementById("jobTitle");
         const company = document.getElementById("company");
         const startDate = document.getElementById("startDate");
         const endDate = document.getElementById("endDate");
         const description = document.getElementById("description");
-        const newEducation = {
+        const newExperience = {
             jobTitle: [jobTitle.value],
             company: [company.value],
             startDate: [startDate.value],
             endDate: [endDate.value],
             description: [description.value]
         }
-        const joined = this.state.education.concat(newEducation)
+        const joined = this.state.experience.concat(newExperience)
         this.setState({
-            education: joined
+            experience: joined
         });
         this.resetInput([jobTitle, company, startDate, endDate, description])
+    }
+
+    toggleExperienceTab(e) {
+        if (!e.target.classList.contains("experience__tabs__tab")) return
+        const selectedTab = this.state.experience[e.target.dataset.index]
     }
 
     resetInput(array) {
@@ -51,11 +57,13 @@ class Resume extends React.Component {
             <div className="resume-main">
                 <ResumeForm 
                     updatePersonalInformation={this.updatePersonalInformation}
-                    addEducation={this.addEducation}
+                    addExperience={this.addEducation}
+                    experienceTabCount={this.state.experience.length}
+                    toggleExperienceTab={this.toggleExperienceTab}
                 />
                 <ResumeDisplay 
                     personalInformation={this.state.personalInformation}
-                    education={this.state.education}
+                    experience={this.state.experience}
                 />
             </div>
         )
